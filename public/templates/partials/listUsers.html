@@ -1,0 +1,49 @@
+	<h2>List Users</h2>
+	<input type="button" value="Refresh Data" ng-click="load('users')" />
+	<p />
+	<button ng-disabled="pageinfo.users.currentpage==0" 
+		ng-click="pageinfo.users.currentpage=pageinfo.users.currentpage-1">
+		Previous
+	</button>
+	{{pageinfo.users.currentpage + 1}}/{{numberofpages('users')}}
+	<button ng-disabled="pageinfo.users.currentpage >= (modeldata.users.length/pageinfo.users.pagesize)-1" 
+		ng-click="pageinfo.users.currentpage=pageinfo.users.currentpage+1">
+		Next
+	</button>
+	<table class="table table-inverse">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>E-mail</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="rec in modeldata.users | 
+			pagestartfrom:pageinfo.users.currentpage*pageinfo.users.pagesize |
+			limitTo:pageinfo.users.pagesize">
+			<td scope="row"><a href="#/editUser?id={{rec._id}}">
+				{{(pageinfo.users.currentpage*pageinfo.users.pagesize) + $index+1}}</a>
+			</td>
+			<td>{{rec.name}}</td>
+			<td>{{rec.email}}</td>
+			<td><button 
+				class="btn-danger btn-sm" 
+				ng-click="deleteDocument('users',rec._id)">-</button></td>
+		</tr>
+	</tbody>
+	</table>
+	<button ng-disabled="pageinfo.users.currentpage==0" 
+		ng-click="pageinfo.users.currentpage=pageinfo.users.currentpage-1">
+		Previous
+	</button>
+	{{pageinfo.users.currentpage + 1}}/{{numberofpages('users')}}
+	<button ng-disabled="pageinfo.users.currentpage >= (modeldata.users.length/pageinfo.users.pagesize)-1" 
+		ng-click="pageinfo.users.currentpage=pageinfo.users.currentpage+1">
+		Next
+	</button>
+	<input type="button" value="Refresh Data" ng-click="load('users')" />
+	<script>
+	angular.element($('#mainController')).scope().load('users');
+	</script>

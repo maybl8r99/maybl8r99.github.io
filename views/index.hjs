@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html ng-app='mainApp'>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title"><% title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+      crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="https://d3js.org/d3-axis.v1.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+  </head>
+  <body id="mainController" ng-controller="mainController">
+  <!--
+    The nav section needs to be automated or configurable from the backend.
+    We can load a JSON structure and represent it on the menubar
+  -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" 
+            data-toggle="collapse"
+            data-target="#navbarCollapse"
+            aria-expanded="false">
+            <span class="sr-only">Toggle Navigation</span>
+            <span class="icon-bar"></span>    
+            <span class="icon-bar"></span>    
+            <span class="icon-bar"></span>    
+          </button>
+          <a class="navbar-brand" href="">SkilledUp</a>          
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a class="menu-item" href="#/">Home <span class="sr-only">(Current)</span></a></li>
+            <li class="dropdown">
+              <a href="" 
+                class="a dropdown-toggle" 
+                data-toggle="dropdown" 
+                role="button"
+                aria-haspopup="true" 
+                aria-expanded="false">Add <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a class="menu-item" href="#/addArticle">Add Article</a></li>
+                  <li><a class="menu-item" href="#/addInstitute">Add Institute</a></li>
+                  <li><a class="menu-item" href="#/addUser">Add User</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+              <a href="" 
+                class="dropdown-toggle" 
+                data-toggle="dropdown" 
+                role="button"
+                aria-haspopup="true" aria-expanded="false">List<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a class="menu-item" href="#/listUsers">List User</a> </li>
+                  <li><a class="menu-item" href="#/listArticles">List Articles</a></li>
+                  <li><a class="menu-item" href="#/listInstitutions">List Institutions</a></li>
+                </ul>
+            </li>
+            <li><a class="menu-item" href="#/d3">D3</a></li>
+            <li><a class="menu-item" href="" ng-click="clearmodel()">Reset</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <h1 id="pagetitle"><% title %></h1>
+    <p>Welcome to <% title %></p>
+
+    <div class="view-animate-container">
+    <ng-view onload="changelocation()" class="view-animate">
+        Loading data...
+    </ng-view>
+    </div>
+    <div class="container">
+      <div class="alert alert-success">
+        <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> This alert box could indicate a successful or positive action.
+      </div>
+      <div class="alert alert-info">
+        <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Info!</strong> {{ info }}
+      </div>
+      <div class="alert alert-warning">
+        <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Warning!</strong> {{ errors }}
+      </div>
+      <div class="alert alert-danger">
+        <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+      </div>
+    </div>
+    <script src='/javascripts/app.js'></script> 
+    <script src='/javascripts/routes.js' defer></script> 
+    <script src='/javascripts/scripts.js'></script>
+  </body>
+</html>

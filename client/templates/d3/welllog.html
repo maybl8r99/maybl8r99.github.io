@@ -1,0 +1,45 @@
+<div>
+<h2>Well-Log POC</h2>
+Depth: {{activity.depthSelection}}<br />
+	Paste your data from <a href="https://dl.dropboxusercontent.com/u/15832176/dorodillo.xlsx" target="blank">Excel</a> below.<input type="button" 
+		value="Click to show Paste Box" onclick="$('#pastebox').css('display','block');" /><br />
+	<div id="pastebox" style="display:none">
+	<textarea ng-model="csv_text" width="100%" style="width:80%;height:90;background-color:#ddd"
+		placeholder="Paste your CSV (comma) or TSV (tab) here."></textarea>
+	<br />
+	<input type="button" ng-click="text2data(csv_text,'welllogdata')" 
+		value="Press button when ready to plot" 
+		onclick="$('#pastebox').css('display','none');"/>
+	<p />
+	</div>
+	<div style="vertical-align: top">
+	<wellcontext height="600"></wellcontext>
+	<welllog scaledynamic="1"
+		series='
+		{	
+			"config":
+				{
+					"rop": {"scale":"log"}
+				},
+			"cols":
+				{
+				"a": ["rpm","torque"],
+				"b": ["wob", "rop"],
+				"c": ["spp","flwpmps"]
+				}
+		}		
+'
+		width="60%" 
+		height="600"
+		data="welllogdata"
+		plotheatmap="1"
+		context="context"
+		properties="chartproperties">
+	</welllog>
+	</div>
+	<br />
+<div style="float:left;">Select depth from:</div>
+	<input type="range" min="0" max="10000" ng-model="activity.depthSelection[0]" style="width:20%;float: right;"/> 
+	<input type="range" min="0" max="10000" ng-model="activity.depthSelection[1]" style="width:20%;float: right"/>
+</div>
+

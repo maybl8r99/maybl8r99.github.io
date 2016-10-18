@@ -1,0 +1,183 @@
+body {
+  padding: 5px;
+  font-size: 10pt;
+}
+
+.note {
+  font-size:8pt;
+}
+.config-table {
+  padding: 5px;
+  vertical-align:top;
+  border: 0.5px solid #555;
+  font-size: 10pt;
+}
+
+.block {
+
+	background-color: blue;
+     width: 150px;
+     height: 70px;
+     margin: 10px;
+  }
+
+.chart {
+    background: #eee;
+    padding: 3px;
+}
+
+.chart div {
+  width: 0;
+  transition: all 1s ease-out;
+  -moz-transition: all 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+}
+
+.chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 5px;
+  color: white;
+  box-shadow: 2px 2px 2px #666;
+}
+.node circle {
+  fill: #999;
+}
+
+.node text {
+  font: 10px sans-serif;
+}
+
+.node--internal circle {
+  fill: #555;
+}
+
+.node--internal text {
+  text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+}
+
+.link {
+  fill: none;
+  stroke: #555;
+  stroke-opacity: 0.4;
+  stroke-width: 1.5px;
+}
+
+.hover-line {
+	stroke: #444;
+	opacity: 1;
+	fill: none;
+}
+.axis-marker {
+  fill:red;
+  opacity: 0.5;
+  display: ;
+}
+.series-label {
+  fill: black;
+  font-weight: bold;
+}
+
+.log-even-background {
+  fill : blue;
+  opacity : 0.1;
+}
+
+.log-odd-background {
+  fill : blue;
+  opacity: 0.2;
+}
+
+/*
+  Log titles
+*/
+.log-label-spp{
+  fill: green;
+}
+.log-spp {
+  stroke: green;
+}
+.log-titlebox-spp {
+  fill: green;
+  opacity: 0.15;
+}
+
+.log-label-rop{
+  fill: purple;
+}
+.log-rop {
+  stroke: purple;
+}
+.log-titlebox-rop {
+  fill:purple;
+  opacity: 0.15;
+}
+
+.log-label-rpm{
+  fill: orange;
+}
+.log-rpm {
+  stroke: orange;
+}
+.log-titlebox-rpm {
+  fill:orange;
+  opacity: 0.15;
+}
+
+.log-label-wob{
+  fill: blue;
+}
+.log-wob {
+  stroke: blue;
+}
+.log-titlebox-wob {
+  fill:blue;
+  opacity: 0.15;
+}
+
+.log-label-torque{
+  fill: red;
+}
+.log-torque {
+  stroke: red;
+
+}
+.log-titlebox-torque {
+  fill:red;
+  opacity: 0.15;
+}
+
+.log-label-flwpmps{
+  fill: black;
+}
+.log-flwpmps {
+  stroke: black;
+
+}
+.log-titlebox-flwpmps {
+  fill:black;
+  opacity: 0.15;
+}
+
+.log-depth {
+  stroke: black;
+
+}
+.log-titlebox-depth {
+  fill:black;
+  opacity: 0.15;
+}
+
+.series-boundary {
+  stroke: black;
+}
+
+.zoom-controls {
+  cursor: ns-resize;
+}
+
+.brush {
+  cursor: crosshair;
+}

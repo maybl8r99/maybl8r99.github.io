@@ -1,0 +1,26 @@
+	<h2>List Articles</h2>
+	<input id="loadbtn" type="button" value="Refresh Data" ng-click="load('article')" />
+	<table class="table table-inverse">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Title</th>
+			<th>Date Posted</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="rec in modeldata.article">
+			<td scope="row"><a href="#/editArticle?id={{rec._id}}">{{$index + 1}}</a></td>
+			<td>{{rec.title}}</td>
+			<td>{{rec.datePosted}}</td>
+			<td><button 
+				class="btn-danger btn-sm" 
+				ng-click="deleteDocument('article',rec._id)">-</button></td>
+		</tr>
+	</tbody>
+	</table>
+	<input type="button" value="Refresh Data" ng-click="load('article')" />
+	<script>
+	angular.element($('#mainController')).scope().load('article');
+	</script>

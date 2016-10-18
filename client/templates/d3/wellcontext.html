@@ -1,0 +1,30 @@
+
+<div style="position: relative;">
+<canvas id="canvas" width="300" height="300" style="z-index:1"></canvas>
+<svg id="svg" height="500" width="24" style="position: absolute;left:0px;top:0px;z-index:2">
+<g id="well-depth-context">
+	<g id="header" transform="translate(7,0)">
+		<line x1="5" y1="0" x2="5" y2="15" style="stroke:#CCC" />
+		<path d="M2 15 L5 0 L8 15 Z" style="fill:none;stroke:black"/>
+		<line x1="0" y1="15" x2="10" y2="15" style="stroke:black" />
+		<line x1="2" y1="8" x2="8" y2="8" style="stroke:black" />
+		<line x1="4" y1="0" x2="6" y2="0" style="stroke:black" />
+	</g>
+	<g id="body" transform="translate(7,15)">
+		<line id="well-bore-line" x1="5" y1="0" x2="5" y2="480" style="stroke:#CCC" />
+		<g id="selected-depth">
+			<line id="top-depth" x1="2" x2="8" y1="10" y2="10" style="stroke:#000" />
+			<line id="btm-depth" x1="2" x2="8" y1="100" y2="100" style="stroke:#000" />
+			<rect id="zone" x="3.5" y="10" width="3" height="90" style="stroke:#000;fill:none" />
+		</g>
+	</g>
+	<g id="target" transform="translate(7,493)">
+		<circle cx="5" cy="4" r="2" style="fill:#444;"/>
+		<g transform="rotate(270),translate(13,1)" id="target-label">
+		<text style="alignment-baseline:middle;text-anchor:middle;font-size:8px">TD:</text>
+		<text transform="translate(20,0)" style="alignment-baseline:middle;text-anchor:middle;font-size:8px" id="td-depth">12345</text>
+		</g>
+	</g>
+</g>
+</svg>
+</div>

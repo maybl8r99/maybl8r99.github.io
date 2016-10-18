@@ -1,0 +1,131 @@
+<script>
+// init
+	window.dataFileUrl = '/data/multi-well.csv';
+
+</script>
+<div>
+<h2>Multi Well Log Comparison POC</h2>
+<p>
+Multi Well Log Comparison using <a href="https://en.wikipedia.org/wiki/Parallel_coordinates" target="reference">Parallel Coordinates</a>, a common way to visualise high-dimension geometry and analysing multivariate data. 
+This proof loads data from a multiple well down-hole drilling logs and the chart itself has various features to help users observe geometric patterns in the data.<br />
+<p><strong>Note</strong><br />This page is intended to be viewed with a desktop browser as it requires CPU and memory to process high number of DOM elements in memory to store the data points.
+<br/>
+<div>
+<input id="togglecp" type="button" onclick="togglecontrolpanel()" value="Hide Control-panel" />
+<div class="table-responsive" id="control-panel">
+	<table width="2000" class="table table-bordered">
+	<thead>
+		<tr>
+			<td>1.</td>
+			<td>2.</td>
+			<td>3.</td>
+			<td>4.</td>
+			<td>5.</td>
+		</tr>
+	</thead>
+	<tr>
+		<td class="config-table" class="pre-data">
+			Load data:<br />
+			<input type="text" ng-model="dataFileUrl" />
+			<input type="button" value="Load Data" ng-click="loadDataFrom(dataFileUrl)"/>
+			<br /><span class="note">Loading data will reset the chart.</span><br />
+			<p>The following is in memory:
+			<ul>
+				<li>Data points: {{data.length||0}}</li>
+			</ul>
+			</p>
+		</td>
+		<td class="config-table" width="20%" class="post-data">
+			The list below contains the wells which have been loaded. Select one or more wells from the list as a pre-filter:<br />
+				<select multiple="true" ng-model="filter.wells" ng-
+					ng-options="well for well in wellList" size="5">
+				</select>
+		</td>
+		<td class="config-table" class="post-data">
+			<input type="button" value="Plot Chart" onclick="showplot()" />
+		</td>
+		<td class="config-table" class="post-data">
+			Dimension ordering.<br /><span class="note"><i>Feature is still experimental. Chart will be re-generated when dimensions are re-ordered.</i></note>
+			<table style="width:auto;" class="table table-bordered">
+				<thead>
+					<tr>
+						<td>Dimensions</td>
+					</tr>
+				</thead>
+				<tbody id="dimension-order" ui-sortable ng-model="context.dimensionOrder" style="font-size:10pt"
+				 	>
+					<tr ng-repeat="d in context.dimensionOrder" class="item" style="cursor:move" 
+					onmousedown="hideplot" onmouseup="showplot" 					
+					>
+						<td>{{d}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</td>
+		<td class="config-table" class="post-data">
+			There are various dimensions which can be animated. Animation over the values allow for interesting observations on the correlation of the other dimensions against the animated dimension. For the button below, it animates a narrow filter on the "depth" dimension.
+			<br/>
+			<button value="animate" ng-click="events['animate']='depth'">Animate Depth</button><br />
+			<button value="animate" ng-click="events['animate']=''">Stop Animation</button>
+		</td>
+	</tr>
+	</table>
+</div>
+</div>
+<br />
+<div id="plot-area" style="clear:left;display:none">
+<parallelmultiwell width="100%" height="700"
+	series='
+		{
+			"config":{
+				"wellname":{"scale":"ordinal"},
+				"rop":{"scale":"log"},
+				"torque":{"animate":false},
+				"flwpmps":{"animate":true},
+				"wob":{"animate":true},
+				"depth":{"animate":true,"label":"Depth (MD)"}
+			},
+			"dimensions":["wellname","depth","wob","torque","rpm","flwpmps","spp","rop"]
+		}
+	'
+	filter='filter'
+	events='events'
+	context='context'
+	data='data'
+	well-list='wellList'
+>
+</parallelmultiwell>
+</div>
+<div id="stage-area" width="100%" height="700">
+<svg width="100%" height="700">
+	<g><text>Please wait...</text></g>
+</svg>
+</div>
+<pre>
+To do:
+
+	*	Cluster Analysis
+	*	External dimensions - correlated data from different source (e.g. formation or lithology)
+	*	Canvas chart - current chart renders in SVG (which is slow when it comes to larger datasets)
+</pre>
+</div>
+<script>
+$('#dimension-order').mousedown(hideplot);
+$('#dimension-order').mouseup(showplot);
+$('.post-data').css('pointer-events','none');
+function togglecontrolpanel() {
+	var cp = $('#control-panel');
+	var state = cp.css('display');
+	cp.css('display',(state=='none')?'':'none');
+	$('#togglecp').prop('value','Hide Control-panel')
+	if (state!='none') $('#togglecp').prop('value','Show Control-Panel');
+}
+function hideplot() {
+	$('#plot-area').css('display','none');
+	$('#stage-area').css('display','');
+}
+function showplot() {
+	$('#plot-area').css('display','');
+	$('#stage-area').css('display','none');
+}
+</script>

@@ -1,0 +1,10 @@
+	<form name="form" novalidate class="css-form">
+		<h2>Add User</h2>
+		<input type="hidden" ng-model="formdata.users._id" />
+		<label for="formdata.users.name">Name</label>
+		<input class="form-control" type="text" placeholder="Name of person" ng-model="formdata.users.name" id="formdata.users.name" />
+		<label for="formdata.users.email">E-mail</label>
+		<input class="form-control" type="text" placeholder="E-mail of person" ng-model="formdata.users.email" id="formdata.users.email" />
+		<input type="submit" class="btn-success btn-lg" value="Save Data" ng-click="save('users',formdata.users)" />
+		<input type="submit" class="btn-warning btn-lg" value="Cancel" ng-click="clearform('users')"/>
+	</form>

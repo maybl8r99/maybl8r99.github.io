@@ -1,0 +1,30 @@
+<h1>D3 Data Visualisation</h1>
+
+<div ng-controller="d3Controller">
+	<input type="button" ng-click="generategraphdata()" value="Click Me" />
+	<select ng-model="d3_selected_model" ng-change="d3_update()">
+		<option value="">...</option>
+		<option 
+			ng-repeat="d in modelnames" 
+			value="{{d.name}}"
+			ng-selected="d3_selected_model==d.name">{{d.name}}</option>
+	</select>
+	<dvdchart width="50%" height="40%" scaletowindow="true"
+		chart-data="dvddata" 
+		label-y="Depth" label-x="Time"></dvdchart>
+	<barchart chart-data="graphdata"></barchart>
+	<!--
+	<flower></flower>
+	-->
+	<div id="data-viewport">
+	</div>
+</div>
+<script>
+	var _file = 'js/app_d3.js';
+	importFile(_file);
+	
+</script>
+
+<!--
+<script src="js/app_d3.js"></script>
+-->

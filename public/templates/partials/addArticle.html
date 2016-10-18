@@ -1,0 +1,33 @@
+	<form name="form" novalidate class="css-form">
+		<h2>Add Article</h2>
+		<input type="hidden" ng-model="formdata.article._id" />
+		<label for="formdata.article.title">Title</label>
+		<input class="form-control" type="text" placeholder="Title of the article" ng-model="formdata.article.title" id="formdata.article.title" />
+		<label for="formdata.article.content">Content</label>
+		<textarea 
+			class="form-control"
+			placeholder="Content of the article" 
+			ng-model="formdata.article.content"
+			style="min-width:50%;min-height:150px"
+			id="formdata.article.content"></textarea>
+		<label>Posting Date</label>
+		<input type="date" ng-model="date" />
+		<input type="range" ng-model="range" min="0" max="1000"/>
+		<div class="input-group date" id="datetimepicker">
+			<input type="text" ng-model="formdata.article.datePosted" class="form-control" />
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-calender"></span>
+			</span>
+		</div>
+		<script>
+			$(function(){
+				$(".input-group.date").datepicker({
+					orientation: "bottom auto",
+					format: "dd/M/yyyy",
+					autoclose: true,
+				});
+			})
+		</script>
+		<input type="submit" class="btn-success btn-lg" value="Save Data" ng-click="save('article',formdata.article)" />
+		<input type="submit" class="btn-warning btn-lg" value="Cancel" ng-click="clearform('article')"/>
+	</form>

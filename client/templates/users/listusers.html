@@ -1,0 +1,21 @@
+<!-- list users -->
+<h1>User List</h1>
+
+<button ng-click="load('users')">Load Users</button>
+
+<table class="table-striped" width="100%">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Email</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="user in modeldata.users | orderBy : 'name'">
+		<td>{{$index+1}}</td>
+		<td><a href="/#/edituser?id={{user._id}}">{{user.name}}</a></td>
+		<td>{{user.email}}</td>
+	</tr>
+	</tbody>
+</table>

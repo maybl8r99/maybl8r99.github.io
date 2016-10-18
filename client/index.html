@@ -1,0 +1,44 @@
+<html ng-app="brixmindApp" id="brixmindApp">
+	<head>
+		<title>JS QS</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/styles.css" />
+		<script src="js/libs/jquery-3.1.0.min.js"></script>
+		<script src="js/libs/jquery-ui.min.js"></script>		
+		<script src="js/libs/angular.min.js"></script>
+		<script 
+			src="js/libs/angular-ui-router.min.js"></script>
+		<script 
+			src="js/libs/angular-ui.min.js"></script>
+		<script 
+			src="js/libs/angular-route.min.js"></script>
+		<script src="js/libs/bootstrap.min.js" ></script>
+		<script src="js/libs/d3.js"></script>
+
+	</head>
+	<body ng-controller="mainController">
+		<h1>{{title}}</h1>
+		<div><a href="/#/">Home</a></div>
+	    <ng-view class="view-animate">
+	        <h1>Loading data...</h1>
+	    </ng-view>
+	    <a href="/#/">Home</a>
+	    {{testvar}}
+	</body>
+	<script src="js/common.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/SBrixIO.js"></script>
+	<script src="js/Cd3.js"></script>
+	<script src="js/routes.js"></script>
+	<script src="js/DirD3.js"></script>
+	<script src="js/d3/DirDashboard.js"></script>
+	<script src="js/d3/DirWellLog.js"></script>
+	<script src="js/d3/DirParallelMultiWell.js"></script>
+	<script src="js/d3/DirCParallelMultiWell.js"></script>
+	<script src="js/d3/DirWellContext.js"></script>
+	<!--
+	<script src="js/chart.js"></script>
+	-->
+</html>

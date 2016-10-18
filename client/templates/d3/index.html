@@ -1,0 +1,54 @@
+<div>
+<h1>Dashboard</h1>
+Rop: {{activity.selecteddata.rop}}
+<h2>Days Vs. Depth D3 POC</h2>
+	<button ng-click="generategraphdata()">Generate RANDOM Data</button><br />
+	<welllog scaledynamic="1"
+	<welllog scaledynamic="1"
+		series='
+		{	
+			"config":
+				{
+					"rop": {"scale":"log"}
+				},
+			"cols":
+				{
+				"a": ["rpm","torque"],
+				"b": ["wob", "rop"],
+				"c": ["spp","flwpmps"]
+				}
+		}		
+'
+		width="60%" 
+		height="600"
+		data="welllogdata"
+		plotheatmap="1"
+		context="context"
+		properties="chartproperties">
+	</welllog>
+	<br />
+	<div width="100%" style="float:left">
+		<dvdlinechart scaledynamic="1"
+			showcost="1"
+			costcolor="red"
+			depthcolor="blue"
+			width="90%"
+			height="400"
+			hidebottomaxis="1"
+			data="dvddata"
+			context="context"
+			>
+		</dvdlinechart><br />
+		<cumulativechart scaledynamic="1"
+			width="90%"
+			height="80"
+			ytickcount="4"
+			data="dvddata"
+			context="context"
+			hidetopaxis="1"
+			>
+		</cumulativechart><br />
+
+	</div>
+X={{activity.x}}, Y={{activity.y}}
+</div>

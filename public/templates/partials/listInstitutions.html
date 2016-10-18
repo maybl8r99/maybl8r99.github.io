@@ -1,0 +1,41 @@
+	<h2>List Institutions</h2>
+	<input type="button" value="Refresh Data" ng-click="load('institution')" />
+	<table class="table table-inverse">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Country</th>
+			<th>Category</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="rec in modeldata.institution | 
+			pagestartfrom:pageinfo.institution.currentpage*pageinfo.institution.pagesize |
+			limitTo:pageinfo.institution.pagesize">
+			<td scope="row"><a href="#/editInstitute?id={{rec._id}}">
+				{{(pageinfo.institution.currentpage*pageinfo.institution.pagesize) + $index+1}}</a>
+			</td>
+			<td>{{rec.name}}</td>
+			<td>{{rec.country}}</td>
+			<td>{{rec.category}}</td>
+			<td><button 
+				class="btn-danger btn-sm" 
+				ng-click="deleteDocument('institution',rec._id)">-</button></td>
+		</tr>
+	</tbody>
+	</table>
+	<button ng-disabled="pageinfo.institution.currentpage==0" 
+		ng-click="pageinfo.institution.currentpage=pageinfo.institution.currentpage-1">
+		Previous
+	</button>
+	{{pageinfo.institution.currentpage + 1}}/{{numberofpages('institution')}}
+	<button ng-disabled="pageinfo.institution.currentpage >= (modeldata.institution.length/pageinfo.institution.pagesize)-1" 
+		ng-click="pageinfo.institution.currentpage=pageinfo.institution.currentpage+1">
+		Next
+	</button>
+	<input type="button" value="Refresh Data" ng-click="load('institution')" />
+	<script>
+	angular.element($('#mainController')).scope().load('institution','#/listInstitutions');
+	</script>
